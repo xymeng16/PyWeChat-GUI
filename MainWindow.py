@@ -36,17 +36,20 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "PyWeChat"))
 
 class MessageThread(QThread):
-    trigger = pyqtSignal()
+    trigger = pyqtSignal([MessageHandler])
 
     def __init__(self):
         super(MessageThread,self).__init__()
 
     def run(self):
         msgHandler = MessageHandler()
-        self.trigger.emit()
+        self.trigger.emit(msgHandler)
 
-def loginSuccessful():
-    print("Login Successfully!")
+
+def loginSuccessful(msgHandler):
+    print("Updating chatting objects!")
+    print(msgHandler.getMsgList())
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
