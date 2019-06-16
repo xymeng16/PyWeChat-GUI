@@ -11,8 +11,8 @@ class MessageHandler:
         # bot = Bot(qr_path="/home/xiangyi/Desktop/PyWeChat-GUI/",qr_callback=qr_callback)
         self.bot = Bot()
 
-    def getChatList(self):
-        return self.bot.chats()
+    def getChatList(self, update=False):
+        return self.bot.chats(update)
 
     def getFriendList(self):
         return self.bot.friends()
@@ -26,5 +26,10 @@ class MessageHandler:
     def getMsgList(self):
         return self.bot.messages
 
+    def botEmbed(self):
+        embed()
+
+    def botJoin(self):
+        self.bot.join()
 if __name__ == '__main__':
     msgHandler = MessageHandler()
